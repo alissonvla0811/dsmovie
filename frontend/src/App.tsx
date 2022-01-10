@@ -1,9 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
-    <h1>Principal</h1>
+    <NavBar/>
   );
 }
 
