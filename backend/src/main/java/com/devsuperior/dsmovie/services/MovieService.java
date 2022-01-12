@@ -19,4 +19,9 @@ public class MovieService {
 	public Page<MovieDTO> findAll(Pageable pageable){
 		return movieRepository.findAll(pageable).map(m -> new MovieDTO(m));
 	}
+	
+	@Transactional(readOnly = true)
+	public MovieDTO findById(Long id){
+		return new MovieDTO(movieRepository.findById(id).get());
+	}
 }
