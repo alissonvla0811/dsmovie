@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.dsmovie.dto.MovieDTO;
+import com.devsuperior.dsmovie.exception.DsmovieException;
 import com.devsuperior.dsmovie.repositories.MovieRepository;
 
 @Service
@@ -22,6 +23,6 @@ public class MovieService {
 	
 	@Transactional(readOnly = true)
 	public MovieDTO findById(Long id){
-		return new MovieDTO(movieRepository.findById(id).get());
+		return new MovieDTO(movieRepository.findById(id).orElseThrow(() -> new DsmovieException("Filme não encontrado com id "+id)));
 	}
 }
